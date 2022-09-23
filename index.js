@@ -49,8 +49,8 @@ let data = {};
     async function addArticle(stuff){
         //const stuff = await doAjax({});
         //console.log(stuff[0])
-        for(let i = 0; i < stuff.length; i++){
-            return 
+        //for(let i = 0; i < stuff.length; i++){
+            //return 
             /*
                         <div class="card" style="width: 18rem;">
               <img src="" class="card-img-top" alt="...">
@@ -61,6 +61,13 @@ let data = {};
               </div>
             </div>
             */
+            let HTML = '';
+            stuff.map(newscard => {
+                HTML += NewsCard(newscard);
+                //console.log(`${newscard.description}`);
+            })
+            document.getElementById("container").innerHTML = HTML;
+
         }
         /*let row = document.createElement('div');
         row.classList.add("row");
@@ -70,6 +77,6 @@ let data = {};
         col.innerHTML = data[0].description;
         row.appendChild(col);
         container.append(row);*/
-    }
+    //}
 
     doAjax({}).then( (data) => addArticle(data) )
