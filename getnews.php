@@ -11,16 +11,8 @@
     $response = [];
 
     while($a = $result->fetch_assoc()){
-        $response['articles'] = $a;
+        $response[] = $a;
     }
-
-    if(isset($response['articles'])){
-        $response["success"] = true;
-    }
-    else{
-        $response["success"] = false;
-    }
-
     $json = json_encode($response);
     echo $json;
 ?>
