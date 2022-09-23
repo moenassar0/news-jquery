@@ -4,6 +4,23 @@
     header('Content-Type: application/json');
     include("connection.php");
     
-    if(isset($_POST['']) && isset($_POST[''])){
+    $query = $mysqli->prepare("SELECT * FROM `articles`");
+    $query->execute();
+    $result = $query->get_result();
+    
+    $response = [];
+
+    while($a = $result->fetch_assoc()){
+        $response['articles'] = $a;
     }
+
+    if(isset($response['articles'])){
+        $response["success"] = true;
+    }
+    else{
+        $response["success"] = false;
+    }
+
+    $json = json_encode($response);
+    echo $json;
 ?>
