@@ -1,5 +1,5 @@
 const container = document.getElementById("container");
-const carousel = document.getElementById("carousel-inner");
+const carouselInner = document.getElementById("carousel-inner");
 const url = "./getnews.php";
 
 import { NewsCard } from "./NewsCard.js";
@@ -45,3 +45,22 @@ async function addArticle(stuff){
 }
 
 doAjax({}).then( (data) => addArticle(data) )
+
+$.getJSON( "./getcarousels.php", function( data ) {
+    var items = [];
+    data.map((carousel, i) => {
+        carouselInner.innerHTML += (`
+            <div class="carousel-item">
+                <img src="${carousel.urlToImage}" class="d-block w-100" alt="...">
+            </div>
+        `)
+    })
+    $.each( data, function( key, val ) {
+      items.push( "<li id='" + key + "'>" + val + "</li>" );
+    });
+   
+    $( "<ul/>", {
+      "class": "my-new-list",
+      html: items.join( "" )
+    }).appendTo( "body" );
+  });
