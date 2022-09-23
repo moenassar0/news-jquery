@@ -1,6 +1,6 @@
 const container = document.getElementById("container");
 const carouselInner = document.getElementById("carousel-inner");
-const url = "./getnews.php";
+const url = "../backend/getnews.php";
 
 import { NewsCard } from "./NewsCard.js";
 
@@ -45,7 +45,7 @@ async function addArticle(stuff){
 
 doAjax({}).then( (data) => addArticle(data) )
 
-$.getJSON( "./getcarousels.php", function( data ) {
+$.getJSON( "../backend/getcarousels.php", function( data ) {
     var items = [];
     data.map((carousel, i) => {
         carouselInner.innerHTML += (`
