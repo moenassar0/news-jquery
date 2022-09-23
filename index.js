@@ -3,7 +3,6 @@ const carouselInner = document.getElementById("carousel-inner");
 const url = "./getnews.php";
 
 import { NewsCard } from "./NewsCard.js";
-import { Carousel } from "./Carousel.js";
 
 async function doAjax(args) {
     let result;
@@ -50,17 +49,13 @@ $.getJSON( "./getcarousels.php", function( data ) {
     var items = [];
     data.map((carousel, i) => {
         carouselInner.innerHTML += (`
-            <div class="carousel-item">
-                <img src="${carousel.urlToImage}" class="d-block w-100" alt="...">
-            </div>
+        <div class="carousel-item">
+          <img style="max-height:350px" src="${carousel.urlToImage}" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>${carousel.title}</h5>
+            <p>${carousel.description}</p>
+          </div>
+        </div>
         `)
     })
-    $.each( data, function( key, val ) {
-      items.push( "<li id='" + key + "'>" + val + "</li>" );
-    });
-   
-    $( "<ul/>", {
-      "class": "my-new-list",
-      html: items.join( "" )
-    }).appendTo( "body" );
   });

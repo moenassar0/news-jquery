@@ -5,7 +5,7 @@ export const NewsCard = (newscard) => {
     <div class="card-body">
       <h5 class="card-title">${newscard.title}</h5>
       <p class="card-text">${newscard.description}</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a href="#" class="btn btn-primary">Open</a>
     </div>
   </div>
     `)
